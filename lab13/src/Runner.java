@@ -74,7 +74,7 @@ public class Runner
         while (n > 0)
         {
             System.out.println("The square root of "+n+" is: "+getSqrt(n));
-            System.out.print("Enter n(0 or a negative number to quit): ");
+            System.out.print("Enter n(a negative number to quit): ");
             n = in.nextDouble();
         }
     }
