@@ -12,9 +12,11 @@ public class Runner
     static double getSqrt(double s){
         double a = s;
         int n = 0;
-        int y = 0;
         int seed = 0;
         
+        /*
+            Seed Approximation
+        */
         if (s == 0)
             return 0;
         else if (s >= 100){
@@ -49,6 +51,10 @@ public class Runner
             seed = 6*k;
         }
         
+        
+        /*
+            Babylonian Method
+        */
         //xn+1 = 1/2(xn+(s/xn))
         double precision = .0000000001; //set the precision
         double x1 = .5*(seed+(s/seed)); //x0 calculation
