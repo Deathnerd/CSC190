@@ -52,9 +52,9 @@ public class Runner
             seed = 6*k;
         }
         
-        System.out.println(a);
-        System.out.println(n);
-        System.out.println(seed);
+//        System.out.println(a);
+//        System.out.println(n);
+//        System.out.println(seed);
         
         
         
