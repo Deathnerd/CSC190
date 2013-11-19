@@ -6,7 +6,6 @@
  * purpose: This program will find the square root of a given number
  */
 import java.util.Scanner;
-import java.lang.Math;
 public class Runner 
 {
     static double getSqrt(double s){
@@ -90,5 +89,4 @@ public class Runner
             n = in.nextDouble();
         }
     }
-    
 }
