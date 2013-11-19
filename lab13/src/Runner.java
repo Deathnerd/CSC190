@@ -19,7 +19,8 @@ public class Runner
         */
         if (s == 0)
             return 0;
-        else if (s >= 100){
+        
+        if (s >= 100){
             //divide
             while(a>=100){
                     a /= 100;
@@ -51,6 +52,11 @@ public class Runner
             seed = 6*k;
         }
         
+        System.out.println(a);
+        System.out.println(n);
+        System.out.println(seed);
+        
+        
         
         /*
             Babylonian Method
@@ -58,7 +64,7 @@ public class Runner
         //xn+1 = 1/2(xn+(s/xn))
         double precision = .0000000001; //set the precision
         double x1 = .5*(seed+(s/seed)); //x0 calculation
-        double x2=0;
+        double x2;
         double diff=1;
         
         //x1+ calculations
