@@ -92,6 +92,9 @@ class Compress
 }
 public class hw11 
 {
+    /*
+        Main Loop
+    */
     public static void run(){
         boolean running = true;
         int choice = 0;
