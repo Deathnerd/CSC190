@@ -41,13 +41,13 @@ class Compress
     
     void compress()
     {
+        compressedText = "";
         int count = 1;
         int i = 1;
         while(i < plainText.length())
         {
             if (plainText.charAt(i-1) == plainText.charAt(i))
             {
-                System.out.println(count);
                 count++;
             }
             else
@@ -56,18 +56,31 @@ class Compress
                 {
                     compressedText += plainText.charAt(i-1);
                     compressedText += count;
-                    System.out.println(compressedText);
                 }
                 else
                 {
                     int j=1;
                     while(j <= count)
                     {
-                        compressedText += plainText.charAt(i);
+                        compressedText += plainText.charAt(i-1);
                         j++;
                     }
                 }
                 count = 1;
+            }
+            if (count > 2 && i == plainText.length()-1)
+            {
+                compressedText += plainText.charAt(i-1);
+                compressedText += count;
+            }
+            else if (i == plainText.length()-1)
+            {
+                int j=1;
+                while(j <= count)
+                {
+                    compressedText += plainText.charAt(i-1);
+                    j++;
+                }
             }
             i++;
         }
@@ -112,9 +125,10 @@ public class hw11
             System.out.println("4. Decompress");
             System.out.println("5. Print plainText");
             System.out.println("6. Print compressedText");
-            System.out.println("7. quit");
-            System.out.println("Enter choice: ");
+            System.out.println("7. Quit");
+            System.out.print("Enter choice: ");
             choice = in.nextInt();
+            System.out.println();
             
             /*
                 Check the choice
