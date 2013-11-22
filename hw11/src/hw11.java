@@ -4,7 +4,8 @@
  * date: 11/20/2013
  * author: Wes Gilleland
  * purpose: This program will take a string, compress the string, and decompress
- * the compressed string
+ * the compressed string as well as print out both the compressed and decompressed
+ * string
  */
 
 import java.util.Scanner;
@@ -22,18 +23,18 @@ class Compress
     }
     
     void setPlainText(){
-        System.out.println("Input plainText (lowercase alphabetic and blank characters only): ");
-        plainText = in.nextLine();
-        if(plainText == ""){
+        System.out.print("Input plainText (lowercase alphabetic and blank characters only): ");
+        plainText = in.next();
+        if(plainText == ""){ //check for null input
             System.out.println("plainText cannot be null!");
             setPlainText();
         }
     }
     
     void setCompressedText(){
-        System.out.println("Input plainText (lowercase alphabetic and blank characters only): ");
-        compressedText = in.nextLine();
-        if(plainText == ""){
+        System.out.print("Input compressedText (lowercase alphanumeric and blank characters only): ");
+        compressedText = in.next();
+        if(compressedText == ""){ //check for null input
             System.out.println("compressedText cannot be null!");
             setCompressedText();
         }
@@ -41,17 +42,28 @@ class Compress
     
     void compress()
     {
-        compressedText = "";
+        if (plainText == ""){
+            System.out.println("plainText cannot be null!");
+            return;
+        }
+        compressedText = ""; //reset compressedText
         int count = 1;
         int i = 1;
-        while(i < plainText.length())
+        while(i < plainText.length()) //iterate through the compressedText
         {
+            /*
+                if two consecutive letters are the same, then increment the count
+            */
             if (plainText.charAt(i-1) == plainText.charAt(i))
             {
                 count++;
             }
             else
             {
+                /*
+                    if we have more than two consecutive characters that are the same,
+                    then append that character plus count
+                */
                 if (count > 2)
                 {
                     compressedText += plainText.charAt(i-1);
@@ -59,6 +71,10 @@ class Compress
                 }
                 else
                 {
+                    /*
+                        if there's two or less consecutive characters, then append 
+                        count number of that character
+                    */
                     int j=1;
                     while(j <= count)
                     {
@@ -66,8 +82,13 @@ class Compress
                         j++;
                     }
                 }
-                count = 1;
+                count = 1; //reset count for next loop
             }
+            /*
+                this block is for the last chunk of characters
+                Ex: plaintext = "aaabbcddaaa"
+                this takes care of the last "aaa"
+            */
             if (count > 2 && i == plainText.length()-1)
             {
                 compressedText += plainText.charAt(i-1);
@@ -86,9 +107,50 @@ class Compress
         }
     }
     
+    /*
+        Decompress Method - Only works with strings with single digit integers
+    */
     void decompress()
     {
-        
+        plainText = ""; //reset plainText
+        if (compressedText == "")
+        {
+            System.out.println("compressedText cannot be null!");
+            return;
+        }
+        int i = 1;
+        while(i < compressedText.length()) //iterate through compressedText
+        {
+            if ((compressedText.charAt(i)-'0') <= 9) //if the character is a number
+            {
+                /*
+                    then append the character to plainText that many times
+                */
+                int num = compressedText.charAt(i)-'0';
+                int j = 1;
+                while(j<=num)
+                {
+                    plainText += compressedText.charAt(i-1);
+                    j++;
+                }
+                i += 2; //skip over comparing the number again
+                
+                if (i > compressedText.length()) //if we've done the last comparison (infinite loop check)
+                    return;
+            }
+            if (compressedText.charAt(i) == compressedText.charAt(i-1)) //check if the next selection is a pair
+            {
+                //then add the pair to plainText
+                plainText += compressedText.charAt(i);
+                plainText += compressedText.charAt(i);
+                i += 2; //skip over the pair for next comparison
+            }
+            else if (compressedText.charAt(i)-'0' > 9) //if it's not a pair and the last character is not a number
+            {
+                plainText += compressedText.charAt(i-1);
+                i++;
+            }
+        }
     }
     
     void printPlainText()
@@ -161,6 +223,9 @@ public class hw11
                 case 7:
                     //quit
                     return;
+                default:
+                    System.out.println("Invalid selection! \n");
+                    break;
             }
         }
     }
