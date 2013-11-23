@@ -15,8 +15,8 @@ class Binary
     {
     }
     
-    String incrementBinary(String input)
-    {
+    String incrementBinary(String input) {
+        
         String binary = "";
         int length = input.length();
         
@@ -27,22 +27,16 @@ class Binary
             check to see if all the characters are ones
         */
         int i = 0;
-        if (input.charAt(0)=='1') //if the first character is a one
-        {
-            while (i < length) //count the number of ones
-            {
-                if(input.charAt(i)=='1')
-                {
-                    i++;
-                    continue;
+        if (input.charAt(0)=='1') { //if the first character is a one
+            while (i < length) { //count the number of ones
+                if(input.charAt(i)!='1') {
+                    break;
                 }
-                break;
+                i++;
             }
-            if (i == length) //if so, appennd "1"+length number of zeros and return
-            {
+            if (i == length){ //if so, appennd "1"+length number of zeros and return
                 int j = 0;
-                while (j < length)
-                {
+                while (j < length) {
                     binary = binary+0;
                     j++;
                 }
@@ -56,20 +50,19 @@ class Binary
             main addition
         */
         i = length-1;
-        while (i >= 0)
-        {
-            if (input.charAt(i)=='0')
-            {
+        while (i >= 0) {
+            if (input.charAt(i)=='0') {
                 return input.substring(0,i)+"1"+binary;
             }
-            else
-                binary = "0" + binary;
+            binary = "0" + binary;
             i--;
         }
+        
         if (binary.length() < input.length())
             binary = binary + "0";
+        
         if (binary.charAt(0)=='0')
-            binary = "1" + binary;
+            return "1" + binary;
         
         return binary;
     }
@@ -98,7 +91,7 @@ class Binary
             line += temp+", ";
         }
         int length = line.length();
-        System.out.println(line.substring(0, length-1));
+        System.out.println(line.substring(0, length-2));
     }
 }
 
