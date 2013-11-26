@@ -9,27 +9,25 @@
 import java.util.Scanner;
 import java.util.Random;
 
-class MyArray 
-{
+class MyArray{
     final int MAXSIZE = 5;
     int A[];
     int n;
     
-    MyArray() 
-    {
+    //constructor
+    MyArray(){
         A = new int[MAXSIZE];
         n = 0;
     }
     
-    void readA()
-    {
+    //read a value and input it into the array
+    void readA(){
         n = 0;
         Scanner in = new Scanner(System.in);
         
         System.out.print("Enter a positive integer: ");
         int key = in.nextInt();
-        while (key > 0)
-        {
+        while (key > 0){
             A[n++] = key;
             if (n >= MAXSIZE)
                 break;
@@ -39,107 +37,95 @@ class MyArray
         System.out.println("N = "+n);
     }
     
-    void printA()
-    {
-        for (int i = 0; i < n; i++)
-        {
+    //print the array
+    void printA(){
+        for (int i = 0; i < n; i++){
             System.out.print(A[i]+" ");
         }
         System.out.println();
     }
     
-        void generateA()
-        {
-            Random random = new Random();
-            n = random.nextInt(MAXSIZE)+1;
-            for (int i = 0; i < n; i++)
-            {
-                A[i] = random.nextInt(100);
+    //generate elements in the array
+    void generateA(){
+        Random random = new Random();
+        n = random.nextInt(MAXSIZE)+1;
+        for (int i = 0; i < n; i++){
+            A[i] = random.nextInt(100);
+        }
+    }
+    
+    //find the maximum value in the array
+    int maxA(){
+        int max = A[0];
+        for (int i = 1; i < n; i++){
+            if (A[i] > max)
+                max = A[i];
+        }
+        return max;
+    }
+
+    //reverse an array
+    void reverseA(){
+        for (int i = 0; i < n/2; i++){
+            //swap A[i] and A[n-i-1]
+            int temp = A[i];
+            A[i] = A[n-i-1];
+            A[n-i-1] = temp;
+        }
+    }
+    
+    //rotate an array to the left
+    void rotateL(){
+        int temp = A[0];
+        for (int i = 1; i < n; i++){
+            A[i-1] = A[i];
+        }
+        A[n-1] = temp;
+    }
+    
+    //rotate an array to the right
+    void rotateR(){
+        int temp = A[n-1];            
+        for (int i = n-2; i >= 0; i--){
+            A[i+1] = A[i];
+        }
+        A[0] = temp;
+    }
+
+    void rotateA(){
+        Scanner in = new Scanner(System.in);
+        String choice;
+
+        do{
+            System.out.println("L - Rotate to left");
+            System.out.println("R - Rotate to right");
+            System.out.println("Q - Quit to main menu");
+
+            choice = in.next();
+
+            switch (choice.charAt(0)){
+                case 'L':
+                    rotateL();
+                    break;
+                case 'R':
+                    rotateR();
+                    break;
+                case 'Q':
+                    return;
+                default:
+                    System.out.println("Invalid input!");
             }
-        }
-        
-        int maxA()
-        {
-            int max = A[0];
-            for (int i = 1; i < n; i++)
-            {
-                if (A[i] > max)
-                    max = A[i];
-            }
-            return max;
-        }
-        
-        void reverseA()
-        {
-            for (int i = 0; i < n/2; i++)
-            {
-                //swap A[i] and A[n-i-1]
-                int temp = A[i];
-                A[i] = A[n-i-1];
-                A[n-i-1] = temp;
-            }
-        }
-        
-        void rotateL()
-        {
-            int temp = A[0];
-            for (int i = 1; i < n; i++)
-            {
-                A[i-1] = A[i];
-            }
-            A[n-1] = temp;
-        }
-        
-        void rotateR()
-        {
-            int temp = A[n-1];
-            
-            for (int i = n-2; i >= 0; i--)
-            {
-                A[i+1] = A[i];
-            }
-            A[0] = temp;
-        }
-        
-        void rotateA()
-        {
-            Scanner in = new Scanner(System.in);
-            String choice;
-            
-            do
-            {
-                System.out.println("L - Rotate to left");
-                System.out.println("R - Rotate to right");
-                System.out.println("Q - Quit to main menu");
-                
-                choice = in.next();
-                
-                switch (choice.charAt(0)){
-                    case 'L':
-                        rotateL();
-                        break;
-                    case 'R':
-                        rotateR();
-                        break;
-                    case 'Q':
-                        return;
-                    default:
-                        System.out.println("Invalid input!");
-                }
-            }while(choice != "Q");
-        }
+        }while(choice != "Q");
+    }
 }
-public class Runner 
-{
-    public static void main(String[] args) 
-    {
+public class Runner {
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         
         MyArray obj = new MyArray();
         //repeated input using a separate check
         String resume;
-        do 
-        {
+        do {
             //menu
             System.out.println("1 - Read Array");
             System.out.println("2 - Generate Array");
@@ -153,12 +139,10 @@ public class Runner
             resume = in.next();
             
             //switch block to check input
-            switch (resume.charAt(0))
-            {
+            switch (resume.charAt(0)){
                 case '1':
                     obj.readA();
                     break;
-                    
                 case '2':
                     obj.generateA();
                     break;
@@ -182,5 +166,4 @@ public class Runner
             }
         } while(resume.charAt(0) != 'x' && resume.charAt(0) != 'X');
     }
-    
 }
