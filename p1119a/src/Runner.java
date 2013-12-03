@@ -117,6 +117,69 @@ class MyArray{
             }
         }while(choice != "Q");
     }
+
+    void bubbleSort(){
+        for (int stage = n-2; stage >= 0; stage--)
+            for (int i = 0; i <= stage; i++)
+                if (A[i] > A[i+1]){
+                    int temp = A[i]; //copy left value into temp variable
+                     //swap
+                    A[i] = A[i+1];
+                    A[i+1] = temp;
+                }
+    }
+    
+    void insertionSort(){
+        
+    }
+    
+    int maxInd(int n){
+        int max = 0;
+        for (int i = 1; i < n; i++){
+            if (A[i] > A[max])
+                max = i;
+        }
+        return max;
+    }
+    
+    void selectionSort(){
+        for (int stage = n; stage >=2; stage--){
+            int m = maxInd(stage);
+            //swap
+            int temp = A[m];
+            A[m] = A[stage-1];
+            A[stage-1] = temp;
+        }
+    }
+    void sortA(){
+        Scanner in = new Scanner(System.in);
+        String choice;
+
+        do{
+            System.out.println("B - Bubble Sort");
+            System.out.println("I - Insertion Sort");
+            System.out.println("S - Selection Sort");
+            System.out.println("M - Return to Main Menu");
+
+            choice = in.next();
+
+            switch (choice.charAt(0)){
+                case 'B':
+                    bubbleSort();
+                    break;
+                case 'I':
+                    insertionSort();
+                    break;
+                case 'S':
+                    selectionSort();
+                    return;
+                default:
+                    System.out.println("Invalid input!");
+            }
+        }while(choice.charAt(0) != 'M');
+    }
+    
+    
 }
 public class Runner {
     public static void main(String[] args) {
@@ -133,6 +196,7 @@ public class Runner {
             System.out.println("4 - Find Max");
             System.out.println("5 - Reverse Array");
             System.out.println("6 - Rotate Array");
+            System.out.println("7 - Sort Array");
             System.out.println("x - Exit");
             System.out.print("Choice: ");
             
@@ -157,6 +221,9 @@ public class Runner {
                     break;
                 case '6':
                     obj.rotateA();
+                    break;
+                case '7':
+                    obj.sortA();
                     break;
                 case 'x': case 'X':
                     System.out.println("Buh-bye!");
