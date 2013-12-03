@@ -1,10 +1,10 @@
-
 /**
  * class: CSC190 project: p1119a date: 11/19/2013 author: Wes Gilleland purpose:
  * This program will make an array of n size and have functions to insert
  * integers, delete integers, and print the array
  */
 
+import java.util.Scanner;
 class OrderedArray {
 
 	int A[];
@@ -38,19 +38,6 @@ class OrderedArray {
 		}
 	}
 
-	void bubbleSort() {
-		for (int stage = n - 2; stage >= 0; stage--) {
-			for (int i = 0; i <= stage; i++) {
-				if (A[i] > A[i + 1]) {
-					int temp = A[i]; //copy left value into temp variable
-					//swap
-					A[i] = A[i + 1];
-					A[i + 1] = temp;
-				}
-			}
-		}
-	}
-
 	void insert(int key) {
 		if (currentSize == globalSize) {
 			System.out.println("Array full! Cannot add key");
@@ -67,40 +54,22 @@ class OrderedArray {
 
 	void delete(int key) {
 		int i = 0;
-		int bPosition = 0;
-		int count = 0;
 		//count the number of occurences of the key
 		while (i<A.length){
 			if (A[i]==key){
-				count++;
-			}
-			else
-				break; //A[] is always going to be sorted, so no need to loop through the whole thing if not needed
-		}
-		
-		if (count == 0) //key does not exist, exit
-			return;
-		System.out.println(count);
-		i=0;
-		B = new int[count];
-		
-		while (i<A.length){
-			if (A[i]==key){
-				i++;
-				continue;
-			}
-			else{
-				B[i]=A[i];
-				bPosition++;
+				A[i]=0;
 			}
 			i++;
 		}
-		A=B;
+		currentSize--;
 	}
 
 	void printA() {
-		n = currentSize;
-		for (int i = 0; i < n; i++) {
+		System.out.println();
+		System.out.print("Array is: ");
+		for (int i = 0; i < A.length; i++) {
+			if(A[i] == 0)
+				continue;
 			System.out.print(A[i] + " ");
 		}
 		System.out.println();
@@ -108,19 +77,59 @@ class OrderedArray {
 }
 
 public class hw12 {
+	static void run(){
+		Scanner in = new Scanner(System.in);
+		System.out.print("Enter a size for the array: ");
+		int key;
+		int size = in.nextInt();
+		OrderedArray array = new OrderedArray(size);
+		System.out.println();
+		System.out.println();
+		
+		String resume;
+        do {
+            //menu
+            System.out.println("1 - Insert into Array");
+            System.out.println("2 - Delete from Array");
+            System.out.println("3 - Print Array");
+            System.out.println("x - Exit");
+            System.out.print("Choice: ");
+            
+            resume = in.next();
+			
+			switch(resume){
+				case "1":
+					System.out.println();
+					System.out.print("Enter a value to insert: ");
+					key = in.nextInt();
+					array.insert(key);
+					System.out.println();
+					break;
+
+				case "2":
+					System.out.println();
+					System.out.print("Enter a value to delete: ");
+					key = in.nextInt();
+					array.delete(key);
+					System.out.println();
+					break;
+
+				case "3":
+					array.printA();
+					break;
+					
+				case "x":
+					return;
+					
+				default:
+					System.out.println();
+					System.out.println("Invalid input!");
+					System.out.println();
+			}
+		} while(resume!="x");
+	}
 
 	public static void main(String[] args) {
-		OrderedArray array = new OrderedArray(5);
-		
-		array.printA();
-		array.insert(2);
-		array.insert(1);
-		array.insert(23);
-		array.insert(15);
-		array.insert(15);
-		array.insert(15);
-		array.printA();
-		array.delete(15);
-		array.printA();
+		run();
 	}
 }
