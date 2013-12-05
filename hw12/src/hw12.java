@@ -131,5 +131,6 @@ public class hw12 {
 
 	public static void main(String[] args) {
 		run();
+		System.out.println();
 	}
 }
