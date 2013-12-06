@@ -34,7 +34,7 @@ class SieveOfErasthones{
 		//if the value is true, then sift all multiples of i
 		for (int i = 2; i <= n; i++)
 			if (P[i])
-				for (int j=i; j <= n; j++)
+				for (int j=i+i; j <= n; j+=i)  //Ah ha! jump by i!
 					if (j%i == 0)
 						P[j]=false;
 	}
