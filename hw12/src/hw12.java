@@ -1,6 +1,9 @@
 /**
- * class: CSC190 project: p1119a date: 11/19/2013 author: Wes Gilleland purpose:
- * This program will make an array of n size and have functions to insert
+ * class: CSC190 
+ * project: p1119a 
+ * date: 11/19/2013 
+ * author: Wes Gilleland 
+ * purpose: This program will make an array of n size and have functions to insert
  * integers, delete integers, and print the array
  */
 
