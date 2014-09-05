@@ -1,11 +1,10 @@
-
 /**
  * class: CSC190 project: p1119a date: 11/19/2013 author: Wes Gilleland purpose:
  * Arrays
  */
 
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 class MyArray {
 
@@ -26,14 +25,14 @@ class MyArray {
 		sorted = false;
 		Scanner in = new Scanner(System.in);
 
-		System.out.print("Enter a positive integer: ");
+		System.out.print("Enter a positive integer: " );
 		int key = in.nextInt();
 		while (key > 0) {
 			A[n++] = key;
 			if (n >= MAXSIZE) {
 				break;
 			}
-			System.out.print("Enter a positive integer: ");
+			System.out.print("Enter a positive integer: " );
 			key = in.nextInt();
 		}
 		System.out.println("N = " + n);
@@ -42,7 +41,7 @@ class MyArray {
 	//print the array
 	void printA() {
 		for (int i = 0; i < n; i++) {
-			System.out.print(A[i] + " ");
+			System.out.print(A[i] + " " );
 		}
 		System.out.println();
 	}
@@ -101,9 +100,9 @@ class MyArray {
 		String choice;
 
 		do {
-			System.out.println("L - Rotate to left");
-			System.out.println("R - Rotate to right");
-			System.out.println("Q - Quit to main menu");
+			System.out.println("L - Rotate to left" );
+			System.out.println("R - Rotate to right" );
+			System.out.println("Q - Quit to main menu" );
 
 			choice = in.next();
 
@@ -117,11 +116,11 @@ class MyArray {
 				case 'Q':
 					return;
 				default:
-					System.out.println("Invalid input!");
+					System.out.println("Invalid input!" );
 			}
-		} while (choice != "Q");
+		} while (choice != "Q" );
 	}
-	
+
 	//final
 	void bubbleSort() {
 		for (int stage = n - 2; stage >= 0; stage--) {
@@ -135,19 +134,19 @@ class MyArray {
 			}
 		}
 	}
-	
+
 	//final
 	void insertionSort() {
-		for (int i = 1; i < n; i++){
+		for (int i = 1; i < n; i++) {
 			int t = A[i];
 			int j;
-			for (j = i-1; j >= 0; j--){
+			for (j = i - 1; j >= 0; j--) {
 				if (A[j] > t)
-					A[j+1] = A[j];
+					A[j + 1] = A[j];
 				else
 					break;
 			}
-			A[j+1] = t;
+			A[j + 1] = t;
 		}
 	}
 
@@ -160,7 +159,7 @@ class MyArray {
 		}
 		return max;
 	}
-	
+
 	void selectionSort() {
 		for (int stage = n; stage >= 2; stage--) {
 			int m = maxInd(stage);
@@ -176,10 +175,10 @@ class MyArray {
 		String choice;
 
 		do {
-			System.out.println("B - Bubble Sort");
-			System.out.println("I - Insertion Sort");
-			System.out.println("S - Selection Sort");
-			System.out.println("M - Return to Main Menu");
+			System.out.println("B - Bubble Sort" );
+			System.out.println("I - Insertion Sort" );
+			System.out.println("S - Selection Sort" );
+			System.out.println("M - Return to Main Menu" );
 
 			choice = in.next();
 
@@ -197,7 +196,7 @@ class MyArray {
 					sorted = true;
 					return;
 				default:
-					System.out.println("Invalid input!");
+					System.out.println("Invalid input!" );
 			}
 		} while (choice.charAt(0) != 'M');
 	}
@@ -208,57 +207,56 @@ class MyArray {
 		int key, location;
 
 		do {
-			System.out.println("S - Sequential(serial) Search");
-			System.out.println("B - Binary Search");
-			System.out.println("M - Return to Main Menu");
+			System.out.println("S - Sequential(serial) Search" );
+			System.out.println("B - Binary Search" );
+			System.out.println("M - Return to Main Menu" );
 
 			choice = in.next();
 
 			switch (choice.charAt(0)) {
 				case 'S':
-					System.out.print("Enter a key: ");
+					System.out.print("Enter a key: " );
 					key = in.nextInt();
-                    //location = serialSearch(key);
+					//location = serialSearch(key);
 //					if (location == -1)
 //						System.out.println("Key not found");
 //					else
 //						System.out.println("Key found at position: "+location);
 					break;
-					
+
 				case 'B':
-					if (sorted){
-						System.out.print("Enter a key: ");
+					if (sorted) {
+						System.out.print("Enter a key: " );
 						key = in.nextInt();
 						location = binarySearch(key);
 						if (location == -1)
-							System.out.println("Key not found");
+							System.out.println("Key not found" );
 						else
-							System.out.println("Key found at position: "+location);
-					}
-					else
-						System.out.println("Array is not sorted; please sort first.");
+							System.out.println("Key found at position: " + location);
+					} else
+						System.out.println("Array is not sorted; please sort first." );
 					break;
-				
+
 				case 'M':
 					return;
-					
+
 				default:
-					System.out.println("Invalid input!");
+					System.out.println("Invalid input!" );
 			}
 		} while (choice.charAt(0) != 'M');
 	}
-	
-	int sequentialSearch(int key){
+
+	int sequentialSearch(int key) {
 		for (int i = 1; i < n; i++)
 			if (key == A[i])
 				return i;
-		return -1;		
+		return -1;
 	}
-	
-	int binarySearch(int key){
-		int left = 0, right = n-1;
-		while(left <= right){
-			int middle = (left+right)/2;
+
+	int binarySearch(int key) {
+		int left = 0, right = n - 1;
+		while (left <= right) {
+			int middle = (left + right) / 2;
 			if (key == A[middle])
 				return middle;
 			if (key < A[middle])
@@ -280,16 +278,16 @@ public class Runner {
 		String resume;
 		do {
 			//menu
-			System.out.println("1 - Read Array");
-			System.out.println("2 - Generate Array");
-			System.out.println("3 - Print Array");
-			System.out.println("4 - Find Max");
-			System.out.println("5 - Reverse Array");
-			System.out.println("6 - Rotate Array");
-			System.out.println("7 - Sort Array");
-			System.out.println("8 - Search Array");
-			System.out.println("x - Exit");
-			System.out.print("Choice: ");
+			System.out.println("1 - Read Array" );
+			System.out.println("2 - Generate Array" );
+			System.out.println("3 - Print Array" );
+			System.out.println("4 - Find Max" );
+			System.out.println("5 - Reverse Array" );
+			System.out.println("6 - Rotate Array" );
+			System.out.println("7 - Sort Array" );
+			System.out.println("8 - Search Array" );
+			System.out.println("x - Exit" );
+			System.out.print("Choice: " );
 
 			resume = in.next();
 
@@ -321,10 +319,10 @@ public class Runner {
 					break;
 				case 'x':
 				case 'X':
-					System.out.println("Buh-bye!");
+					System.out.println("Buh-bye!" );
 					break;
 				default:
-					System.out.println("Invalid input!");
+					System.out.println("Invalid input!" );
 			}
 		} while (resume.charAt(0) != 'x' && resume.charAt(0) != 'X');
 	}

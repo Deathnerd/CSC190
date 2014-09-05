@@ -6,12 +6,10 @@
  * purpose: This program will take a string and compress the string, 
  * then decompress the compressed string
  */
-import java.util.Scanner;
-public class hw10 
-{
-    public static void main(String[] args) 
-    {
-        
-    }
-    
+
+public class hw10 {
+	public static void main(String[] args) {
+
+	}
+
 }

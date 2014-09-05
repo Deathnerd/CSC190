@@ -8,23 +8,21 @@
 
 import java.util.Scanner;
 
-public class Reverse 
-{
-    public static void main(String[] args) 
-    {
-        Scanner in = new Scanner(System.in);
-        
-        int n; //input
-        int r=0; //output
-        
-        System.out.print("Enter n (five digit integer): ");
-        n = in.nextInt();
-        
-        while (n != 0){
-            r = (r*10)+(n%10);
-            n = n/10;
-        }
-        
+public class Reverse {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
+		int n; //input
+		int r = 0; //output
+
+		System.out.print("Enter n (five digit integer): " );
+		n = in.nextInt();
+
+		while (n != 0) {
+			r = (r * 10) + (n % 10);
+			n = n / 10;
+		}
+
 //        //reverse digits. If n = 12345, then r = 54321
 //        r = n%10; //r = 5
 //        n = n/10; //n = 1234
@@ -36,6 +34,6 @@ public class Reverse
 //        n = n/10; //n = 1
 //        r = (r*10)+(n); //r = 54321
 //        
-          System.out.println(r);
-    }
+		System.out.println(r);
+	}
 }

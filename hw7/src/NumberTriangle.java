@@ -10,95 +10,88 @@
 
 import java.util.Scanner;
 
-public class NumberTriangle 
-{
-    public static void triangle1(int n)
-    {
-        //check the input and return an error message if erronous input
-        if (n<1){
-            System.out.println("Please enter a value greater than or equal to 1.");
-            return;
-        }
-        
-        int val=1;
-        
-        for (int i=1; i<=n;i++)
-        {
-            for (int j=1; j<=i; j++)
-            {
-                System.out.printf("%3d",val);
-                val++;
-            }
-            System.out.println();
-        }
-    }
-    
-    public static void triangle2(int n)
-    {   
-        //check the input and return an error message if erronous input
-        if (n<1){
-            System.out.println("Please enter a value greater than or equal to 1.");
-            return;
-        }
-        
-        int val2, val1=1, m;
-        
-        for (int i=1; i<=n; i++){
-            System.out.printf("%3d", val1);
-            val2 = val1;
-            m = 1;
-            for (int j=1; j<i; j++){
-                val2 = val2+(n-m);
-                System.out.printf("%3d", val2);
-                m++;
-            }
-            System.out.println();
-            val1++;
-        }
-    }
-    
-    public static void triangle3(int n){
-        //check the input and return an error message if erronous input
-        if (n<1){
-            System.out.println("Please enter a value greater than or equal to 1.");
-            return;
-        }
-        
-        int val1 = n;
-        for (int i = 1; i <= n; i++)
-        {    
-          for (int k = n-i; k>0; k--)
-             System.out.print("   ");
-          
-          System.out.printf("%3d", val1);
-          
-          int val2 = val1;
-          int m = 0;
-          
-          for (int j = 1; j < i; j++)
-          {
-             val2 = val2+(n- m);
-             System.out.printf("%3d", val2);
-             m++;
-          }
-          System.out.println();
-          val1--;
-        }
-    }
-    public static void main(String[] args) 
-    {
-        Scanner in = new Scanner(System.in); 
-        int input;
+public class NumberTriangle {
+	public static void triangle1(int n) {
+		//check the input and return an error message if erronous input
+		if (n < 1) {
+			System.out.println("Please enter a value greater than or equal to 1." );
+			return;
+		}
 
-        System.out.println("Input the size of the triangle you want: ");
-        input = in.nextInt();
-        
+		int val = 1;
+
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= i; j++) {
+				System.out.printf("%3d", val);
+				val++;
+			}
+			System.out.println();
+		}
+	}
+
+	public static void triangle2(int n) {
+		//check the input and return an error message if erronous input
+		if (n < 1) {
+			System.out.println("Please enter a value greater than or equal to 1." );
+			return;
+		}
+
+		int val2, val1 = 1, m;
+
+		for (int i = 1; i <= n; i++) {
+			System.out.printf("%3d", val1);
+			val2 = val1;
+			m = 1;
+			for (int j = 1; j < i; j++) {
+				val2 = val2 + (n - m);
+				System.out.printf("%3d", val2);
+				m++;
+			}
+			System.out.println();
+			val1++;
+		}
+	}
+
+	public static void triangle3(int n) {
+		//check the input and return an error message if erronous input
+		if (n < 1) {
+			System.out.println("Please enter a value greater than or equal to 1." );
+			return;
+		}
+
+		int val1 = n;
+		for (int i = 1; i <= n; i++) {
+			for (int k = n - i; k > 0; k--)
+				System.out.print("   " );
+
+			System.out.printf("%3d", val1);
+
+			int val2 = val1;
+			int m = 0;
+
+			for (int j = 1; j < i; j++) {
+				val2 = val2 + (n - m);
+				System.out.printf("%3d", val2);
+				m++;
+			}
+			System.out.println();
+			val1--;
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int input;
+
+		System.out.println("Input the size of the triangle you want: " );
+		input = in.nextInt();
+
 //        triangle1(input);
 //        System.out.println();
 //        triangle2(input);
 //        System.out.println();
-        triangle3(input);
-        System.out.println();
-        
-    }
+		triangle3(input);
+		System.out.println();
+
+	}
 }

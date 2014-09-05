@@ -8,13 +8,13 @@
  */
 
 import java.util.Scanner;
+
 class OrderedArray {
 
 	int A[];
 	int globalSize;
 	int n = 0;
 	int currentSize = 0;
-	int B[];
 
 	OrderedArray(int size) {
 		A = new int[size]; //main array
@@ -43,7 +43,7 @@ class OrderedArray {
 
 	void insert(int key) {
 		if (currentSize == globalSize) {
-			System.out.println("Array full! Cannot add key");
+			System.out.println("Array full! Cannot add key" );
 			return;
 		} else {
 			currentSize++;
@@ -58,9 +58,9 @@ class OrderedArray {
 	void delete(int key) {
 		int i = 0;
 		//count the number of occurences of the key
-		while (i<A.length){
-			if (A[i]==key){
-				A[i]=0;
+		while (i < A.length) {
+			if (A[i] == key) {
+				A[i] = 0;
 			}
 			i++;
 		}
@@ -69,67 +69,67 @@ class OrderedArray {
 
 	void printA() {
 		System.out.println();
-		System.out.print("Array is: ");
-		for (int i = 0; i < A.length; i++) {
-			if(A[i] == 0)
+		System.out.print("Array is: " );
+		for (int aA : A) {
+			if (aA == 0)
 				continue;
-			System.out.print(A[i] + " ");
+			System.out.print(aA + " " );
 		}
 		System.out.println();
 	}
 }
 
 public class hw12 {
-	static void run(){
+	static void run() {
 		Scanner in = new Scanner(System.in);
-		System.out.print("Enter a size for the array: ");
+		System.out.print("Enter a size for the array: " );
 		int key;
 		int size = in.nextInt();
 		OrderedArray array = new OrderedArray(size);
 		System.out.println();
 		System.out.println();
-		
-		String resume;
-        do {
-            //menu
-            System.out.println("1 - Insert into Array");
-            System.out.println("2 - Delete from Array");
-            System.out.println("3 - Print Array");
-            System.out.println("x - Exit");
-            System.out.print("Choice: ");
-            
-            resume = in.next();
-			
-			switch(resume){
-				case "1":
+
+		char resume;
+		do {
+			//menu
+			System.out.println("1 - Insert into Array" );
+			System.out.println("2 - Delete from Array" );
+			System.out.println("3 - Print Array" );
+			System.out.println("x - Exit" );
+			System.out.print("Choice: " );
+
+			resume = in.next().charAt(0);
+
+			switch (resume) {
+				case '1':
 					System.out.println();
-					System.out.print("Enter a value to insert: ");
+					System.out.print("Enter a value to insert: " );
 					key = in.nextInt();
 					array.insert(key);
 					System.out.println();
 					break;
 
-				case "2":
+				case '2':
 					System.out.println();
-					System.out.print("Enter a value to delete: ");
+					System.out.print("Enter a value to delete: " );
 					key = in.nextInt();
 					array.delete(key);
 					System.out.println();
 					break;
 
-				case "3":
+				case '3':
 					array.printA();
 					break;
-					
-				case "x":
+
+				case 'x':
 					return;
-					
+
 				default:
 					System.out.println();
-					System.out.println("Invalid input!");
+					System.out.println("Invalid input!" );
 					System.out.println();
 			}
-		} while(resume!="x");
+		} while (true);
 	}
 
 	public static void main(String[] args) {

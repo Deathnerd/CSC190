@@ -5,14 +5,13 @@
  * author: Wes Gilleland
  * purpose: This program...
  */
+
 import java.util.Scanner;
 
-public class p0903d 
-{
-    public static void main(String[] args) 
-    {
-        Scanner in = new Scanner(System.in);
-        
+public class p0903d {
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+
 //        int mAge; //input
 //        int wAge; //output
 //        
@@ -31,7 +30,7 @@ public class p0903d
 //        
 //        bmi = (int)Math.round(703*weight/(height*height));
 //        System.out.println("BMI = "+bmi);
-        
+
 //        int weight; 
 //        float firstOunce, restOunces, cost;
 //        
@@ -45,7 +44,7 @@ public class p0903d
 //        System.out.println("First Ounce: "+firstOunce);
 //        System.out.println("Rest Ounces: "+restOunces);
 //        System.out.println("Total cost (in cents): "+cost);
-        
+
 //          float input; //input
 //          int dollars, cents;
 //          
@@ -56,34 +55,32 @@ public class p0903d
 //          cents = (int)(input*100)%100;
 //          
 //          System.out.println(dollars+" Dollars and "+cents+" cents");
-        
-            double input;
-            int dollars, quarters, dimes, nickels, pennies, total, iAmount;
-            
-            System.out.print("Input amount: ");
-            input = in.nextDouble();
-            iAmount = (int)(input*100);
-            
-            dollars = iAmount/100; //get dollars
-            iAmount = iAmount%100;
-            quarters = iAmount/25; //get quarters
-            iAmount = iAmount%25;
-            dimes = iAmount/10; //get dimes
-            iAmount = iAmount%10;
-            nickels = iAmount/5; //get nickels
-            pennies = iAmount%5;
-            
-            total = dollars+quarters+dimes+nickels+pennies;
-            
-            System.out.println("Dollars: "+dollars);
-            System.out.println("Quarters: "+quarters);
-            System.out.println("Dimes: "+dimes);
-            System.out.println("Nickels: "+nickels);
-            System.out.println("Pennies: "+pennies);
-            System.out.println("Total : "+total);
-            
-          
-          
-          
-    }
+
+		double input;
+		int dollars, quarters, dimes, nickels, pennies, total, iAmount;
+
+		System.out.print("Input amount: " );
+		input = in.nextDouble();
+		iAmount = (int) (input * 100);
+
+		dollars = iAmount / 100; //get dollars
+		iAmount = iAmount % 100;
+		quarters = iAmount / 25; //get quarters
+		iAmount = iAmount % 25;
+		dimes = iAmount / 10; //get dimes
+		iAmount = iAmount % 10;
+		nickels = iAmount / 5; //get nickels
+		pennies = iAmount % 5;
+
+		total = dollars + quarters + dimes + nickels + pennies;
+
+		System.out.println("Dollars: " + dollars);
+		System.out.println("Quarters: " + quarters);
+		System.out.println("Dimes: " + dimes);
+		System.out.println("Nickels: " + nickels);
+		System.out.println("Pennies: " + pennies);
+		System.out.println("Total : " + total);
+
+
+	}
 }
